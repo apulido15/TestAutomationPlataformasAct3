@@ -9,7 +9,8 @@ import org.junit.runner.RunWith;
         plugin = {"pretty"},
         features = {"classpath:features"},
         glue = {"starter.stepdefinitions"},
-        tags = "@EliminarLibro"
+        snippets = CucumberOptions.SnippetType.UNDERSCORE,
+        tags = "@CatalogoLibros"
 )
 public class CucumberTestSuite {
 }

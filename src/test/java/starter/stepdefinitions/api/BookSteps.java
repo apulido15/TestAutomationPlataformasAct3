@@ -17,7 +17,6 @@ import org.hamcrest.Matchers;
 
 public class BookSteps {
     private Actor actor;
-    private String response;
     private String request;
     private int idEliiminar;
 
@@ -55,9 +54,8 @@ public class BookSteps {
 
     @When("edita el libro con id {int} con la siguiente informacion")
     public void edita_el_libro_con_id_con_la_siguiente_informacion(Integer id,List<Map<String, Object>> dataTable) throws JsonProcessingException {
-
         ObjectMapper mapper = new ObjectMapper();
-         request = mapper.writeValueAsString(dataTable.get(0));
+        request = mapper.writeValueAsString(dataTable.get(0));
         actor.attemptsTo(Put.to("/libros/" + id).with(rq -> rq.body(request)));
 
     }
@@ -87,5 +85,4 @@ public class BookSteps {
         actor.attemptsTo(Ensure.that("Respuesta de la consulta del elemento eliminado no existe",
                 t -> t.statusCode(HttpStatus.SC_NOT_FOUND)));
     }
-
 }
